@@ -20,11 +20,20 @@ __Command:__ ```hydra <options> <target> <module> <module parameters>```
 - ssh
 - ftp
 
-### Wordists
+## Medusa
+__Command:__ ```medusa <options> -h <target> -mM <protocol>```
+
+### Options
+- ```-U <list>```: usernames list
+- ```-u <username>```: specific username
+- ```-P <list>```: passwords list
+- ```-p <password>```: specific password
+
+## Wordlists
 __Credentials:__ /usr/share/seclists/Passwords/Default-Credentials  
 __Usernames:__ /usr/share/seclists/Usernames/Names/names.txt  
 __Passwords:__ /usr/share/seclists/Passwords/Leaked-Databases/rockyou.txt
 
-### Personalized wordlists
+### Generating personalized wordlists
 __CUPP__: Tool for generating custom password list based on information about target individual. Run with command ```cupp -i```. Further permutations of the characters in the passwords can be performed using 'mangling'. Output can be modified to remove passwords that do not comply with the password policy using ```sed```.  
 __username-anarchy__: Tool for generating custom usernames list based on information about target individual. Command: ```./username-anarchy <first name> <last name>```.
