@@ -193,3 +193,81 @@ Identifying user used for connection and its privileges
 ```
 
 Then execute queries using sysadmin privileges on the linked server.
+
+## SQLMap
+__Command:__ ```sqlmap <target options> <other options>```
+
+### Target options
+- ```-u <url>```: URL of target
+- ```-d <string>```: Connection string for direct database connection
+- ```-l <file>```: Parse target from proxy log file
+- ```-m <file>```: FIle containing multiple URLs
+- ```-c <file>```: Load options from configuration INI file
+- ```-r <file>```: Load HTTP request from file
+
+### Request options
+- ```-A <user-agent>```: HTTP User-Agent header value
+- ```-H <header>```: Extra header
+- ```--method=<method>```: Specify HTTP method
+- ```--data=<data>```: Data string to be sent though POST
+- ```--cookie=<cookie>```: HTTP Cookie header value
+
+### Enumerating database
+- ```--banner```: Get database version banner
+- ```--current-user```: Get current user name
+- ```--current-db```: Get current database name
+- ```--is-dba```: Check if current user has DBA (administrator) rights
+- ```--tables```: Return table names
+- ```--schema```: Get structure of all tables
+- ```--search <-D/-T/-C> <keyword>```: Search for databases, tables and columns of interest
+
+### Tuning attacks
+- ```-p <parameter>```: Test particular parameter
+- ```--prefix```: Add prefix to all injection vector values
+- ```--suffix```: Add suffix to all injection vector values
+- ```--level```: Extend vectors and boundaries being used based on expectancy of success
+- ```--risk```: Extend vectors based on risk of causing problems at the target side
+- ```--union-cols=<number>```: Specify number of columns of vulnerable SQL query in the case of UNION type attacks not working
+- ```--union-char='<char>'```: Specify alternate value for default "dummy" filling values used by SQLmap, in teh case of UNION type attacks not working
+- ```--technique=<technique>```: Specify SQLi technique to use
+- ```--where=<condition>```: Specify WHERE condition (e.g. ```name LIKE 'f%'```)
+
+### Bypassing web application protections
+- ```--csrf-token=<token name>```: Bypass anti-CSRF protection using token in request data
+- ```--randomize=<parameter>```: Bypass requirement for unique values to be provided
+- ```--eval=<python code>```: Bypass requirement for a paramater value to be a calculation (e.g. hash of another parameter), with Python code for calculation as the input value
+- ```--proxy=<proxy address>```: Conceal IP address using a working proxy
+- ```--tor```: Conceal IP address using Tor
+- ```--check-tor```: Check that Tor is beign used correctly
+- ```--random-agent```: Changes default SQLMap agent to randomly chosen value
+- ```--tamper```: Python scripts which modify requests before they are sent to the target, to bypass some kind of protection
+- ```--chunked```: Splits POST request body into 'chunks', allowing blacklisted SQL keywords to be split between them and abel to pass through unnoticed
+
+### OS exploitation
+- ```--file-read <file>```: Read local file
+- ```--file-write <fiel>```: File to write data from (on attacking machine)
+- ```--file-dest <file>```: File to write data to (on target machine)
+- ```--os-shell```: Get reverse shell
+- ```--technique=<SQL injection type>```: Specify technique to use for better chance of direct output
+
+### Other options
+- ```--batch```: Use defaults without asking for user input
+- ```--dump```: Dump all data from current database
+- ```--dump-all```: Dump data from all databases
+- ```-D <database>```: Dump data from specified database
+- ```-T <table>```: Dump data from specified table
+- ```-C <column>```: Dump data from specified column/s
+- ```--passwords```: Dump passwords
+- ```--start```: Specify number of entry to start from
+- ```--stop```: Specify number of entry to stop at
+- ```--parse-errors```: Parse and display DBMS errors
+- ```-t <file>```: Store traffic to output file
+- ```--proxy```: Redirect traffic through proxy
+
+### SQL injection types
+- ```B```: Boolean-based blind
+- ```E```: Error-based
+- ```U```: Union query-based
+- ```S```: Stacked queries
+- ```T```: Time-based blind
+- ```Q```: Inline queries
