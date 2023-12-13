@@ -3,7 +3,7 @@
 ## Structure
 After installation, all WordPress related files will be located in the  ```/var/www/html``` directory.
 
-Important files & directories:
+__Important files & directories:__
 - ```index.php```: homepage of WordPress.
 - ```license.txt```: contains useful information such as the version WordPress installed.
 - ```wp-activate.php```: used for the email activation process when setting up a new WordPress site.

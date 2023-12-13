@@ -35,5 +35,5 @@ __Usernames:__ /usr/share/seclists/Usernames/Names/names.txt
 __Passwords:__ /usr/share/seclists/Passwords/Leaked-Databases/rockyou.txt
 
 ### Generating personalized wordlists
-__CUPP__: Tool for generating custom password list based on information about target individual. Run with command ```cupp -i```. Further permutations of the characters in the passwords can be performed using 'mangling'. Output can be modified to remove passwords that do not comply with the password policy using ```sed```.  
-__username-anarchy__: Tool for generating custom usernames list based on information about target individual. Command: ```./username-anarchy <first name> <last name>```.
+- __CUPP__: Tool for generating custom password list based on information about target individual. Run with command ```cupp -i```. Further permutations of the characters in the passwords can be performed using 'mangling'. Output can be modified to remove passwords that do not comply with the password policy using ```sed```.  
+- __username-anarchy__: Tool for generating custom usernames list based on information about target individual. Command: ```./username-anarchy <first name> <last name>```.
