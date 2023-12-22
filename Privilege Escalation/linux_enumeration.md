@@ -80,6 +80,9 @@ Cron jobs can be found in the ```/etc/cron.daily``` directory. These are tasks t
 ### Proc files
 Show proc files, which can reveal information about system processes & hardware: ```find /proc -name cmdline -exec cat {} \; 2>/dev/null | tr " " "\n"```
 
+### Scripts
+Find all shell scripts: ```find / -type f -name "*.sh" 2>/dev/null | grep -v "src\|snap\|share"```
+
 ### File systems & drives
 Get information about block devices on the systems (e.g. disks, drives): ```lsblk```  
 Check for credentials for mounted drives: ```cat /etc/fstab```  
@@ -94,10 +97,13 @@ If it is possible to mount additional drives or unmounted file systems, sensitiv
 ### SETUID & SETGID Permissions
 Binaries set with these permissions allow users to run the binaries as root, which can be exploietd to gain a root shell
 
-### Writable directories & files
-Find writable directories: ```find / -path /proc -prune -o -type d -perm -o+w 2>/dev/null```.
+List all binaries with SETUID set: ```find / -user root -perm -4000 -exec ls -ldb {} \; 2>/dev/null```  
+List all binaries with SETGID set: ```find / -user root -perm -6000 -exec ls -ldb {} \; 2>/dev/null```
 
-Find writable files: ```find / -path /proc -prune -o -type f -perm -o+w 2>/dev/null```
+### Writable files & directories
+Find writable files: ```find -maxdepth 10 -type f -writable 2>dev/null```
 
-### Scripts
-Find all shell scripts: ```find / -type f -name "*.sh" 2>/dev/null | grep -v "src\|snap\|share"```
+Find writable directories: ```find -maxdepth 10 -type d -writable 2>dev/null```.
+
+### Capabilities
+Display all capabilities for all existing executables: ```find /usr/bin /usr/sbin /usr/local/bin /usr/local/sbin -type f -exec getcap {} \;```
